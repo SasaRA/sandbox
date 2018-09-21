@@ -143,7 +143,7 @@ function init() {
 function start() {
     trace('start');
     preloadTwitterFetcher($tfConfig);
-    buildMainTL(0.5,2);
+    buildMainTL(0.5,1.5);
     loadListeners();
     // slideShow("intro-bg",10,1.3,1.0,0);
 }
@@ -160,8 +160,8 @@ function buildMainTL(d,t) {
         .add(loadHeadFootTL(), 'headFoot')
         .add(loadSocialTL(0.7), 'social')
         // .add(loadTwitterTL(0.3), 'twitter')
-        .add(loadTwitterTL(0.3), '+=2')
-        .call(mainStagerize,[],this,'+=2')
+        // .add(loadTwitterTL(0.3), '+=2')
+        // .call(mainStagerize,[],this,'+=2')
     ;
 
     if ($playIntro === true) {
