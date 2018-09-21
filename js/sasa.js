@@ -9,13 +9,16 @@ var $debug = true,
 
 var $defaultEase = "Expo.easeOut";
 
+var $sc_NightPlaylist = '<iframe id="scPlaylist" width="100%" height="500" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/3416309&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>';
+//
+
 var $sasaMessageList = [
     'LOVE REIGNS SUPREME',
-    // 'EVERY DAY IS A BLESSING',
+    'EVERY DAY IS A BLESSING',
     'LOVE GOD & LIVE',
     'SHINE BRIGHT',
     'HEARTCORE 4 LIFE',
-    // 'LISTEN TO LIFE',
+    'LISTEN TO LIFE',
     'UNITY = STRENGTH',
     'KEEP SMILING',
     'YOU ARE LOVED'
@@ -56,15 +59,15 @@ var $nimaiOverlay = document.getElementById('nimaiOverlay'),
 var $socialList = [
     'soundcloud'
     // ,'patreon'
+    ,'reverbnation'
     ,'twitter'
-    // ,'reverbnation'
     ,'youtube'
     ,'instagram'
     // ,'tumblr'
     ,'facebook'
     // ,'pinterest'
     // ,'plus'
-    ,'medium'
+    // ,'medium'
     ,'linkedin'
     ,'github'
     ,'codepen'
@@ -142,7 +145,7 @@ function start() {
     preloadTwitterFetcher($tfConfig);
     buildMainTL(0.5,2);
     loadListeners();
-    slideShow("intro-bg",10,1.3,1.0,0);
+    // slideShow("intro-bg",10,1.3,1.0,0);
 }
 
 function buildMainTL(d,t) {
@@ -157,7 +160,8 @@ function buildMainTL(d,t) {
         .add(loadHeadFootTL(), 'headFoot')
         .add(loadSocialTL(0.7), 'social')
         // .add(loadTwitterTL(0.3), 'twitter')
-        // .call(mainStagerize,[],this,'+=2')
+        .add(loadTwitterTL(0.3), '+=2')
+        .call(mainStagerize,[],this,'+=2')
     ;
 
     if ($playIntro === true) {
@@ -233,6 +237,7 @@ function loadHeadFootTL() {
         .to($heartcoreLogo, time, {opacity: 1}, 'hf_0')
         .from($sasaLogo, time, {scale:0.3,y:-150},'hf_1')
         .from($heartcoreLogo, time, {scale:0.3,y:150},'hf_1')
+        .addPause(2)
         ;
 
     return tl;
@@ -253,6 +258,7 @@ function loadSocialTL(d) {
         .from($socialLogos,0.3,{height:0})
         .staggerFrom($link, 0.2, {y: +10, opacity: 0}, 0.035)
         .staggerTo($link,0.2,{scale:0.85}, -0.035)
+        .addPause(2)
     ;
 
     return $socialTL;
@@ -495,6 +501,13 @@ function setMainStage() {
     // trace('nimaiFooterH = ' + nimaiFooterH);
     // trace('setMainStage mainStageMinH = ' + mainStageMinH);
 
+}
+
+function scLoadPlaylist(playlist) {
+    trace('scLoadPlaylist INIT');
+    $scPlayer.classList.remove('hidden');
+    GSAP.insertHTML($scPlayer, playlist);
+    TweenMax.to(scPlaylist, 2, {height: 500});
 }
 
 function setDocSize() {
