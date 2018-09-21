@@ -143,7 +143,7 @@ function init() {
 function start() {
     trace('start');
     preloadTwitterFetcher($tfConfig);
-    buildMainTL(0.5,1.5);
+    buildMainTL(0.5,1.8);
     loadListeners();
     // slideShow("intro-bg",10,1.3,1.0,0);
 }
