@@ -3,7 +3,7 @@
 //////////////////////////
 
 
-var $debug = true,
+var $debug = false,
     $firstTime = true;
     $playIntro = true;
 
@@ -161,7 +161,7 @@ function buildMainTL(d,t) {
         .add(loadSocialTL(0.7), 'social')
         // .add(loadTwitterTL(0.3), 'twitter')
         // .add(loadTwitterTL(0.3), '+=2')
-        // .call(mainStagerize,[],this,'+=2')
+        .call(mainStagerize,[],this,'+=2')
     ;
 
     if ($playIntro === true) {
