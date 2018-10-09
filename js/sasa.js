@@ -182,7 +182,7 @@ function loadSasaMessage() {
 }
 
 function loadListeners() {
-    $sasaLogo.addEventListener("click", mainStagerize);
+    // $sasaLogo.addEventListener("click", mainStagerize);
     // $sasaLogo.addEventListener("mouseover", socialize);
     // $heartcoreLogo.addEventListener("mouseover", twitterize);
     // $heartcoreLogo.addEventListener("click", socialize);
